@@ -23,19 +23,43 @@
 
 // Arguments
 
+// @mixin position(
+//   $position-type,
+//   $position-x,
+//   $position-y,
+//   $offset-x,
+//   $offset-y
+// ) {
+//   position: $position-type;
+//   top: $position-x;
+//   left: $position-y;
+//   transform: translate($offset-x, $offset-y);
+// }
+
+// .decoration {
+//   @include position(absolute, 50%, 50%, -50%, -50%);
+// }
+
+// optional arguments
+
 @mixin position(
-  $position-type,
-  $position-x,
-  $position-y,
-  $offset-x,
-  $offset-y
+  $layer-index,
+  // necessary param
+  $display,
+  $position-type: absolute,
+  $position-x: 50%,
+  $position-y: $position-x,
+  $offset-x: $position-x,
+  $offset-y: $position-x
 ) {
   position: $position-type;
   top: $position-x;
   left: $position-y;
-  transform: translate($offset-x, $offset-y);
+  transform: translate(($offset-x * -1), ($offset-y * -1));
+  z-index: $layer-index;
+  display: $display;
 }
 
 .decoration {
-  @include position(absolute, 50%, 50%, -50%, -50%);
+  @include position(100, block);
 }
