@@ -1,22 +1,41 @@
-@mixin frame_size($width, $height: $width) {
-  width: $width;
-  height: $height;
+// @mixin frame_size($width, $height: $width) {
+//   width: $width;
+//   height: $height;
+// }
+
+// %size {
+//   width: 150px;
+//   height: 150px;
+// }
+
+// .avatar {
+//   @include frame-size(150px);
+//   @extend %size;
+
+//   border-radius: 50%;
+// }
+
+// .icon {
+//   @include frame-size(50px);
+//   @extend %size;
+//   border: 2px solid lightblue;
+// }
+
+// Arguments
+
+@mixin position(
+  $position-type,
+  $position-x,
+  $position-y,
+  $offset-x,
+  $offset-y
+) {
+  position: $position-type;
+  top: $position-x;
+  left: $position-y;
+  transform: translate($offset-x, $offset-y);
 }
 
-%size {
-  width: 150px;
-  height: 150px;
-}
-
-.avatar {
-  @include frame-size(150px);
-  @extend %size;
-
-  border-radius: 50%;
-}
-
-.icon {
-  @include frame-size(50px);
-  @extend %size;
-  border: 2px solid lightblue;
+.decoration {
+  @include position(absolute, 50%, 50%, -50%, -50%);
 }
