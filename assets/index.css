@@ -1,16 +1,10 @@
-.btn-success {
-  border: 2px solid lightgreen;
-  color: lightgreen;
+.button {
+  background-color: white;
+  border: 1px solid darkblue;
 }
-
-.btn-error {
-  border: 2px solid tomato;
-  color: tomato;
-}
-
-.btn-info {
-  border: 2px solid lightblue;
-  color: lightblue;
+.button:not([disabled]):hover {
+  color: white;
+  background-color: darkblue;
 }
 
 @font-face {
