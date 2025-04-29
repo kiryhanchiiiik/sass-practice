@@ -1,11 +1,27 @@
-.decoration {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-     -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  z-index: 100;
-  display: block;
+.btn-success {
+  border: 2px solid lightgreen;
+  color: lightgreen;
+}
+
+.btn-error {
+  border: 2px solid tomato;
+  color: tomato;
+}
+
+.btn-info {
+  border: 2px solid lightblue;
+  color: lightblue;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/sass-practice/assets/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/sass-practice/assets/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
 }
