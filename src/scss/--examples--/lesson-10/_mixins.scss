@@ -42,24 +42,95 @@
 
 // optional arguments
 
-@mixin position(
-  $layer-index,
-  // necessary param
-  $display,
-  $position-type: absolute,
-  $position-x: 50%,
-  $position-y: $position-x,
-  $offset-x: $position-x,
-  $offset-y: $position-x
-) {
-  position: $position-type;
-  top: $position-x;
-  left: $position-y;
-  transform: translate(($offset-x * -1), ($offset-y * -1));
-  z-index: $layer-index;
-  display: $display;
+// @mixin position(
+//   $layer-index,
+//   // necessary param
+//   $display,
+//   $position-type: absolute,
+//   $position-x: 50%,
+//   $position-y: $position-x,
+//   $offset-x: $position-x,
+//   $offset-y: $position-x
+// ) {
+//   position: $position-type;
+//   top: $position-x;
+//   left: $position-y;
+//   transform: translate(($offset-x * -1), ($offset-y * -1));
+//   z-index: $layer-index;
+//   display: $display;
+// }
+
+// .decoration {
+//   @include position(100, block);
+// }
+
+// named arguments
+
+// @mixin position(
+//   $layer-index,
+//   // necessary param
+//   $display,
+//   $position-type: absolute,
+//   $position-x: 50%,
+//   $position-y: $position-x,
+//   $offset-x: $position-x,
+//   $offset-y: $position-x
+// ) {
+//   position: $position-type;
+//   top: $position-x;
+//   left: $position-y;
+//   transform: translate(($offset-x * -1), ($offset-y * -1));
+//   z-index: $layer-index;
+//   display: $display;
+// }
+
+// .decoration {
+//   @include position($offset-y: 70%, $layer-index: 100, $display: block);
+// }
+
+// %btn {
+//   font-family: Montserrat;
+//   font-size: 14px;
+//   font-weight: 500;
+//   line-height: 20px; /* 142.857% */
+//   letter-spacing: 0.5px;
+//   color: #fafafb;
+
+//   background-color: #f07f2e;
+//   border: none;
+//   cursor: pointer;
+//   transition: 300ms;
+
+//   &:hover {
+//     background-color: #f15c27;
+//     box-shadow: 0px 4px 10px 0px rgba(240, 127, 46, 0.25);
+//   }
+// }
+
+// @mixin btn-size($args...) {
+//   @for $i from 1 through length($args) {
+//     #{nth($args, $i)} {
+//       $factor: ($i * 4 - 4);
+
+//       @extend %btn;
+
+//       padding: (4px + $factor) (8px + $factor);
+//       border-radius: (8px + $factor);
+//     }
+//   }
+// }
+
+// @include btn-size(".btn-sm", ".btn-md", ".btn-lg", ".btn-xl");
+
+@use "sass:meta";
+
+@mixin btn-type($types...) {
+  @each $name, $color in meta.keywords($types) {
+    .btn-#{$name} {
+      border: 2px solid $color;
+      color: $color;
+    }
+  }
 }
 
-.decoration {
-  @include position(100, block);
-}
+@include btn-type($success: lightgreen, $error: tomato, $info: lightblue);
